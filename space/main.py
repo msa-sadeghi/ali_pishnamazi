@@ -4,6 +4,7 @@ from chick import Chick
 
 player_bullet_group = pygame.sprite.Group()
 chick_group = pygame.sprite.Group()
+egg_group = pygame.sprite.Group()
 my_player = Player()
 
 
@@ -27,11 +28,14 @@ def check_edge_collisions():
             chick.direction *= -1
             chick.rect.y += 10 * level
             
-
-
-
-
-
+def check_bullet_collisions():
+    if pygame.sprite.groupcollide(player_bullet_group, chick_group, True, True):
+        pass
+    if pygame.sprite.spritecollide(my_player, egg_group, True):
+        pass
+    if pygame.sprite.groupcollide(player_bullet_group, egg_group, True, True):
+        pass
+    
 running = True
 while running:
     for event in pygame.event.get():
@@ -41,11 +45,14 @@ while running:
             if event.key == pygame.K_SPACE:
                 my_player.fire(player_bullet_group)
     check_edge_collisions()
+    check_bullet_collisions()
     screen.fill((0,0,0))
     player_bullet_group.update()
     player_bullet_group.draw(screen)
-    chick_group.update()
+    chick_group.update(egg_group)
     chick_group.draw(screen)
+    egg_group.update()
+    egg_group.draw(screen)
     my_player.move()
     my_player.draw()
     pygame.display.update()
