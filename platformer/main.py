@@ -1,6 +1,10 @@
 import pygame
 from world import World
 from level_creator import world_data
+from player import Player
+
+
+game_player = Player()
 screen_width = 1000
 screen_height = 700
 FPS = 60
@@ -13,6 +17,8 @@ while running:
         if event.type == pygame.QUIT:
             running = False
     game_world.draw(screen)
+    game_player.move()
+    game_player.draw(screen)
     pygame.display.update()
     clock.tick(FPS)
     
