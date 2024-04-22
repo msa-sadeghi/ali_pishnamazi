@@ -1,6 +1,7 @@
 import pygame
+from blob import Blob
 class World:
-    def __init__(self, world_data):
+    def __init__(self, world_data, blob_group):
         dirt_image = pygame.image.load("assets/dirt.png")
         grass_image = pygame.image.load("assets/grass.png")
         self.tiles = []
@@ -16,6 +17,8 @@ class World:
                     img = pygame.transform.scale(grass_image,(50,50))
                     rect = img.get_rect(topleft=(j * 50, i * 50))
                     self.tiles.append((img, rect))
+                if world_data[i][j] == 3:
+                    Blob(j * 50, i * 50 + 15,blob_group)
                     
         
         

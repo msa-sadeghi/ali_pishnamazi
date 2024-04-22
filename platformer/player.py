@@ -17,13 +17,15 @@ class Player(Sprite):
         self.last_update = pygame.time.get_ticks()
         self.moving_status = False
         self.direction = 1
+        self.yvel = 0
+        self.jumped = False
         
     def draw(self, screen):
         
         screen.blit(self.image, self.rect)
         self.animation()
     
-    def move(self):
+    def move(self, tiles, blob_group):
         dx = 0
         dy = 0
         keys = pygame.key.get_pressed()
@@ -37,6 +39,35 @@ class Player(Sprite):
             dx += 5
         if not  keys[pygame.K_LEFT] and not keys[pygame.K_RIGHT]:
             self.moving_status = False  
+        if keys[pygame.K_SPACE] and not self.jumped:
+            self.yvel = -17
+            self.jumped = True
+        dy += self.yvel
+        self.yvel += 1
+        
+        for t in tiles:
+            if t[1].colliderect(self.rect.x, self.rect.y + dy, self.rect.size[0], self.rect.size[1]):
+                if self.yvel > 0:
+                    dy = t[1].top - self.rect.bottom
+                    self.jumped = False
+                else:
+                    
+                    dy = t[1].bottom - self.rect.top
+                self.yvel = 0
+            if t[1].colliderect(self.rect.x + dx, self.rect.y , self.rect.size[0], self.rect.size[1]):
+                dx =0
+        
+        
+        for blob in blob_group:
+            if blob.rect.colliderect(self.rect.x, self.rect.y + dy, self.rect.size[0], self.rect.size[1]):
+                if self.yvel > 1:
+                    print(self.yvel)
+                    blob.kill()
+                else:
+                    print("die!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+                
+        
+        
         self.rect.x += dx
         self.rect.y += dy
     
