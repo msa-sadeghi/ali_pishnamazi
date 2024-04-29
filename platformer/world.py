@@ -1,7 +1,8 @@
 import pygame
 from blob import Blob
+from hiddengrass import HiddenGrass
 class World:
-    def __init__(self, world_data, blob_group):
+    def __init__(self, world_data, blob_group, hidden_grass_group):
         dirt_image = pygame.image.load("assets/dirt.png")
         grass_image = pygame.image.load("assets/grass.png")
         self.tiles = []
@@ -19,6 +20,8 @@ class World:
                     self.tiles.append((img, rect))
                 if world_data[i][j] == 3:
                     Blob(j * 50, i * 50 + 15,blob_group)
+                if world_data[i][j] == 9:
+                    HiddenGrass(j * 50, i * 50 + 15,hidden_grass_group)
                     
         
         

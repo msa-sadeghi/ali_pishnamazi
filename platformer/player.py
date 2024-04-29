@@ -19,13 +19,18 @@ class Player(Sprite):
         self.direction = 1
         self.yvel = 0
         self.jumped = False
+        self.alive = True
+        self.ghost_image = pygame.image.load("assets/ghost.png")
+        self.show_grass = False
         
     def draw(self, screen):
-        
+        if not self.alive:
+            self.image = self.ghost_image
+            
         screen.blit(self.image, self.rect)
         self.animation()
     
-    def move(self, tiles, blob_group):
+    def move(self, tiles, blob_group, hidden_grass_group):
         dx = 0
         dy = 0
         keys = pygame.key.get_pressed()
@@ -44,9 +49,9 @@ class Player(Sprite):
             self.jumped = True
         dy += self.yvel
         self.yvel += 1
-        
         for t in tiles:
             if t[1].colliderect(self.rect.x, self.rect.y + dy, self.rect.size[0], self.rect.size[1]):
+                
                 if self.yvel > 0:
                     dy = t[1].top - self.rect.bottom
                     self.jumped = False
@@ -55,18 +60,31 @@ class Player(Sprite):
                     dy = t[1].bottom - self.rect.top
                 self.yvel = 0
             if t[1].colliderect(self.rect.x + dx, self.rect.y , self.rect.size[0], self.rect.size[1]):
+                
                 dx =0
-        
-        
+
+
         for blob in blob_group:
             if blob.rect.colliderect(self.rect.x, self.rect.y + dy, self.rect.size[0], self.rect.size[1]):
                 if self.yvel > 1:
                     print(self.yvel)
                     blob.kill()
                 else:
-                    print("die!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+                    self.alive = False
                 
-        
+        for grass in hidden_grass_group:
+            if grass.rect.colliderect(self.rect.x, self.rect.y + dy, self.rect.size[0], self.rect.size[1]):
+                self.show_grass = True
+                if self.yvel > 0:
+                    dy = grass.rect.top - self.rect.bottom
+                    self.jumped = False
+                else:
+                    
+                    dy = grass.rect.bottom - self.rect.top
+                self.yvel = 0
+            if grass.rect.colliderect(self.rect.x + dx, self.rect.y , self.rect.size[0], self.rect.size[1]):
+                self.show_grass = True
+                dx =0
         
         self.rect.x += dx
         self.rect.y += dy
