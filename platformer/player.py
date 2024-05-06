@@ -5,13 +5,17 @@ class Player(Sprite):
         super().__init__()
         self.right_images = []
         self.left_images = []
-        self.image_number = 0
         for i in range(1,5):
             img = pygame.image.load(f"assets/guy{i}.png")
             self.right_images.append(img)
             img = pygame.transform.flip(img, True, False)
             self.left_images.append(img)
             
+        self.ghost_image = pygame.image.load("assets/ghost.png")
+        self.reset()
+    
+    def reset(self):
+        self.image_number = 0
         self.image = self.right_images[self.image_number]
         self.rect = self.image.get_rect(topleft=(100, 400))
         self.last_update = pygame.time.get_ticks()
@@ -20,9 +24,9 @@ class Player(Sprite):
         self.yvel = 0
         self.jumped = False
         self.alive = True
-        self.ghost_image = pygame.image.load("assets/ghost.png")
         self.show_grass = False
         
+       
     def draw(self, screen):
         if not self.alive:
             self.image = self.ghost_image
