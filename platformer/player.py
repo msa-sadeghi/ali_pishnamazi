@@ -17,6 +17,7 @@ class Player(Sprite):
     def reset(self):
         self.image_number = 0
         self.image = self.right_images[self.image_number]
+        self.mask = pygame.mask.from_surface(self.image)
         self.rect = self.image.get_rect(topleft=(100, 400))
         self.last_update = pygame.time.get_ticks()
         self.moving_status = False
@@ -30,11 +31,13 @@ class Player(Sprite):
     def draw(self, screen):
         if not self.alive:
             self.image = self.ghost_image
-            
+        self.mask = pygame.mask.from_surface(self.image)
+        pygame.draw.lines(self.image, (255, 0,0),True, self.mask.outline())
+        
         screen.blit(self.image, self.rect)
         self.animation()
     
-    def move(self, tiles, blob_group, hidden_grass_group):
+    def move(self, tiles, blob_group, hidden_grass_group, door_group):
         dx = 0
         dy = 0
         keys = pygame.key.get_pressed()
@@ -53,6 +56,7 @@ class Player(Sprite):
             self.jumped = True
         dy += self.yvel
         self.yvel += 1
+        
         for t in tiles:
             if t[1].colliderect(self.rect.x, self.rect.y + dy, self.rect.size[0], self.rect.size[1]):
                 
@@ -66,29 +70,31 @@ class Player(Sprite):
             if t[1].colliderect(self.rect.x + dx, self.rect.y , self.rect.size[0], self.rect.size[1]):
                 
                 dx =0
-
-
-        for blob in blob_group:
-            if blob.rect.colliderect(self.rect.x, self.rect.y + dy, self.rect.size[0], self.rect.size[1]):
-                if self.yvel > 1:
-                    print(self.yvel)
-                    blob.kill()
-                else:
-                    self.alive = False
+        for door in door_group.sprites():
+            if pygame.sprite.collide_mask(self, door):
+                print("*******************************")
                 
-        for grass in hidden_grass_group:
-            if grass.rect.colliderect(self.rect.x, self.rect.y + dy, self.rect.size[0], self.rect.size[1]):
-                self.show_grass = True
-                if self.yvel > 0:
-                    dy = grass.rect.top - self.rect.bottom
-                    self.jumped = False
-                else:
+        # for blob in blob_group:
+        #     if blob.rect.colliderect(self.rect.x, self.rect.y + dy, self.rect.size[0], self.rect.size[1]):
+        #         if self.yvel > 1:
+        #             print(self.yvel)
+        #             blob.kill()
+        #         else:
+        #             self.alive = False
+                
+        # for grass in hidden_grass_group:
+        #     if grass.rect.colliderect(self.rect.x, self.rect.y + dy, self.rect.size[0], self.rect.size[1]):
+        #         self.show_grass = True
+        #         if self.yvel > 0:
+        #             dy = grass.rect.top - self.rect.bottom
+        #             self.jumped = False
+        #         else:
                     
-                    dy = grass.rect.bottom - self.rect.top
-                self.yvel = 0
-            if grass.rect.colliderect(self.rect.x + dx, self.rect.y , self.rect.size[0], self.rect.size[1]):
-                self.show_grass = True
-                dx =0
+        #             dy = grass.rect.bottom - self.rect.top
+        #         self.yvel = 0
+        #     if grass.rect.colliderect(self.rect.x + dx, self.rect.y , self.rect.size[0], self.rect.size[1]):
+        #         self.show_grass = True
+        #         dx =0
         
         self.rect.x += dx
         self.rect.y += dy

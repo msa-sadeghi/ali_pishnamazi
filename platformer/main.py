@@ -24,7 +24,7 @@ while running:
             running = False
     game_world.draw(screen) 
     if game_player.alive:   
-        game_player.move(game_world.tiles, blob_group, hidden_grass_group)
+        game_player.move(game_world.tiles, blob_group, hidden_grass_group, door_group)
     else:
         restart_btn.draw(screen)
         if restart_btn.check_click():
