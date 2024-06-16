@@ -7,6 +7,9 @@ class Player(Sprite):
         self.left_images = []
         for i in range(1,5):
             img = pygame.image.load(f"assets/guy{i}.png")
+            img_w = img.get_width()
+            imgh = img.get_height()
+            img = pygame.transform.scale(img, (img_w * 0.6, imgh * 0.6))
             self.right_images.append(img)
             img = pygame.transform.flip(img, True, False)
             self.left_images.append(img)
@@ -29,6 +32,7 @@ class Player(Sprite):
         
        
     def draw(self, screen):
+        pygame.draw.rect(screen,(255, 0,0),self.rect, 6)
         if not self.alive:
             self.image = self.ghost_image
         self.mask = pygame.mask.from_surface(self.image)
@@ -37,7 +41,7 @@ class Player(Sprite):
         screen.blit(self.image, self.rect)
         self.animation()
     
-    def move(self, tiles, blob_group, hidden_grass_group, door_group):
+    def move(self, tiles, blob_group, hidden_grass_group, door_group, lava_group):
         dx = 0
         dy = 0
         keys = pygame.key.get_pressed()
@@ -73,6 +77,12 @@ class Player(Sprite):
         for door in door_group.sprites():
             if pygame.sprite.collide_mask(self, door):
                 print("*******************************")
+        for lava in lava_group:
+            print("lava_group", lava_group)
+            print("lava_group.sprites()", lava_group.sprites())
+            if pygame.sprite.collide_mask(self, lava):
+                print("*******************************")
+                break
                 
         # for blob in blob_group:
         #     if blob.rect.colliderect(self.rect.x, self.rect.y + dy, self.rect.size[0], self.rect.size[1]):

@@ -2,8 +2,9 @@ import pygame
 from blob import Blob
 from hiddengrass import HiddenGrass
 from door import Door
+from lava import Lava
 class World:
-    def __init__(self, world_data, blob_group, hidden_grass_group, door_group):
+    def __init__(self, world_data, blob_group, hidden_grass_group, door_group, lava_group):
         dirt_image = pygame.image.load("assets/dirt.png")
         grass_image = pygame.image.load("assets/grass.png")
         self.tiles = []
@@ -25,6 +26,8 @@ class World:
                     HiddenGrass(j * 50, i * 50 + 15,hidden_grass_group)
                 if world_data[i][j] == 4:
                     Door(j * 50, i * 50 + 15,door_group)
+                if world_data[i][j] == 5:
+                    Lava(j * 50, i * 50 + 15,lava_group)
                     
         
         
