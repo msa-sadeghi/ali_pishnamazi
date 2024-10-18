@@ -46,9 +46,15 @@ all_p = {
     4251 : 'ali',
     2341:"reza"
     }
-res = None
-for person in all_p:
-    if all_p[person] == "ali":
-        res = person
-print(list(all_p.keys()))
+# res = None
+# for person in all_p:
+#     if all_p[person] == "ali":
+#         res = person
+# print(list(all_p.keys()))
+
+for key, val in list(all_p.items()):
+    print(key, val)
+    if key == 4251:
+        all_p.pop(key)
+print(all_p)
 
