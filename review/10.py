@@ -25,7 +25,12 @@ def my_func(x,y):
     print(x,y)
     global running
     running = False
-
+s.begin_fill()
+s.forward(300)
+s.left(90)
+s.forward(300)
+s.left(90)
+s.end_fill()
 while running:
     s.left(10)
     sc.onscreenclick(my_func)
