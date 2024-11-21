@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <select name="" id="foods" onchange="myfunction()">
+      <option value="">Select An Item</option>
+      <option value="pizza">pizza</option>
+      <option value="pepperoni">pepperoni</option>
+    </select>
+  </body>
+  <script>
+    console.log(foods.value);
+    function myfunction() {
+      console.log(foods.value);
+    }
+  </script>
+</html>

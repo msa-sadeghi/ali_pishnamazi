@@ -1,0 +1,10 @@
+p {
+    color: brown;
+    font-size: 18px;
+    /*font-weight: bolder;*/
+    font-style: italic bold;
+    direction: ltr;
+  }
+  div {
+    color: brown;
+  }
