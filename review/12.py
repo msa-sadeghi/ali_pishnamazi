@@ -11,6 +11,16 @@
 # bubble_sort(arr)
 # print(arr)
 
+# def factorial(num):
+#     if num == 1:
+#         return 1
+#     return num * factorial(num-1)
+
+
+# print(factorial(5))
+
+
+
 
 class Snake:
     def __init__(self) -> None:
@@ -21,7 +31,7 @@ class Snake:
             self.coordinates.append([0,0])
         for x,y in self.coordinates:
             square = canvas.create_rectangle(x,y, x + SPACE_SIZE, y + SPACE_SIZE, fill="yellow", tag="snake")
-            print(type(square))
+
             self.squares.append(square)
 
 class Food:
@@ -31,6 +41,49 @@ class Food:
         self.coordinates = [x,y]
         canvas.create_oval(x,y, x+SPACE_SIZE, y + SPACE_SIZE, fill="red", tag="food")
 
+def change_direction(new_dir):
+    global direction
+    if new_dir == "left":
+        if direction != "right":
+            direction = new_dir
+    elif new_dir == "right":
+        if direction != "left":
+            direction = new_dir
+    elif new_dir == "up":
+        if direction != "down":
+            direction = new_dir
+    elif new_dir == "down":
+        if direction != "up":
+            direction = new_dir
+
+
+def next_turn(snake, food):
+    x,y = snake.coordinates[0]
+    if direction == "up":
+        y -= SPACE_SIZE
+    elif direction == "down":
+        y += SPACE_SIZE
+    elif direction == "left":
+        x -= SPACE_SIZE
+    elif direction == "right":
+        x += SPACE_SIZE
+    snake.coordinates.insert(0, [x,y])
+    square = canvas.create_rectangle(x,y, x + SPACE_SIZE, y + SPACE_SIZE, fill="yellow", tag="snake")
+    
+    snake.squares.insert(0, square)
+    if x == food.coordinates[0] and y == food.coordinates[1]:
+        global score
+        score += 1
+        label.config(text=f"Score:{score}")
+        canvas.delete("food")
+        food = Food()
+    else:
+        del snake.coordinates[-1]
+        canvas.delete(snake.squares[-1])
+        del snake.squares[-1]
+    window.after(200, next_turn, snake, food)
+        
+
 from tkinter import *
 from random import randint
 GAME_WIDTH = 700
@@ -38,6 +91,7 @@ GAME_HEIGHT = 700
 SPACE_SIZE = 50
 BODY_SIZE = 2
 score = 0
+direction = "down"
 window = Tk()
 window.title("snake")
 window.resizable(False, False)
@@ -62,6 +116,12 @@ y = int((screen_height/2) - (window_height/2))
 
 window.geometry(f"{window_width}x{window_height}+{x}+{y}")
 
+window.bind('<Up>',lambda e: change_direction("up"))
+window.bind('<Down>',lambda e: change_direction("down"))
+window.bind('<Left>',lambda e: change_direction("left"))
+window.bind('<Right>',lambda e: change_direction("right"))
+
 snake = Snake()
 food = Food()
+next_turn(snake, food)
 window.mainloop()
