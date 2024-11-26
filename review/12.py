@@ -20,6 +20,8 @@
 # print(factorial(5))
 
 
+from tkinter import *
+from random import randint
 
 
 class Snake:
@@ -84,8 +86,6 @@ def next_turn(snake, food):
     window.after(200, next_turn, snake, food)
         
 
-from tkinter import *
-from random import randint
 GAME_WIDTH = 700
 GAME_HEIGHT = 700
 SPACE_SIZE = 50
