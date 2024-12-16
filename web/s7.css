@@ -1,0 +1,37 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+DIV.other
+{
+   
+    background-color: red;
+    font-size: 32px;
+    /* padding: 50px;
+    padding-left: 50px;
+    padding-top: 100px;
+    padding: 100px 100px; */
+    padding: 20px 50px 0 20px;
+    border: 3px dotted green;
+    border-top:3px solid blue;
+    width: 300px;
+    height: 300px;
+    margin: 40px;
+    border-radius:10px;
+    text-align: center;
+}
+.test{
+    background-color: green;
+    width: 100px;
+    height: 100px;
+}
+DIV#salam{
+    background-color: gray;
+    width: 100px;
+    height: 100px;
+    margin-top: 10px;
+}
+#salam.t{
+    background-color: red;
+}

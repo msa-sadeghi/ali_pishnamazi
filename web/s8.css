@@ -1,0 +1,54 @@
+@font-face {
+    font-family: vazir-light;
+    src: url(./Vazirmatn-Light.woff2);
+}
+
+
+div.test{
+    direction:rtl;
+    background-color: rgba(100, 100, 100, 0);
+    color:red;
+    padding: 10px;
+    text-align: justify;
+    line-height: 30px;
+    font-family: vazir-light ;
+}
+p.test4{
+    font-family: vazir-light;
+}
+a{
+    text-decoration: none;
+    color: red;
+}
+
+p{
+    text-decoration: line-through;
+    text-shadow: 5px 5px 5px green;
+}
+
+p.test1{
+text-transform: uppercase;
+text-indent: 10px;
+letter-spacing: 3px;
+word-spacing: 50px;
+}
+
+p.test2{
+    width:60px;
+    border:1px solid black;
+    /* white-space: nowrap; */
+    /* overflow: auto; */
+    /* text-overflow: ellipsis; */
+    word-wrap: break-word;
+    text-align: justify;
+}
+p.test3{
+    writing-mode: vertical-rl;
+}
+
+div img{
+    vertical-align: middle;
+}
+
+
+/*   FONT
