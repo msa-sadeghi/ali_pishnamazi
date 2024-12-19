@@ -1,0 +1,44 @@
+body{
+    /* background-color: red;
+    background-image: url(./dragon_right.png);
+    background-repeat: no-repeat; */
+    /* background-repeat: repeat-y; */
+    /* background-position: top center; */
+    /* background-attachment: fixed; */
+}
+header{
+    /* background-image: url(./google.png);
+    height: 400px;
+    background-size: contain; */
+}
+
+
+p.t1{
+    border:10px dotted #000;
+    background-color: red;
+    margin: 0 0 10px 0;
+    padding: 10px;
+    background-clip: border-box;
+}
+p.t2{
+    border:10px dotted #000;
+    background-color: red;
+    margin: 0 0 10px 0;
+    padding: 10px;
+    background-clip: content-box;
+}
+p.t3{
+    border:10px dotted #000;
+    background-color: red;
+    margin: 0 0 10px 0;
+    padding: 10px;
+    background-clip: padding-box;
+}
+
+p.t1 span{
+    font-size: 32px;
+    color:green
+}
+p.t2 svg{
+    width: 10px;
+}

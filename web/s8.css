@@ -1,6 +1,8 @@
 @font-face {
     font-family: vazir-light;
     src: url(./Vazirmatn-Light.woff2);
+    font-weight: bold;
+    font-style: normal;
 }
 
 
@@ -50,5 +52,9 @@ div img{
     vertical-align: middle;
 }
 
-
+p.test12{
+    width: 300px;
+    background-color: green;
+    writing-mode: vertical-lr;
+}
 /*   FONT
