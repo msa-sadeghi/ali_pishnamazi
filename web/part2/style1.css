@@ -1,0 +1,41 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+/* ul{
+     padding: 0;
+    margin: 0; 
+     list-style: square; 
+    list-style-image: url(./i.png);
+    list-style-position: inside;
+    border: 2px solid green;
+    list-style: upper-roman;
+}
+ul li {
+    border: 4px solid blue;
+} */
+
+ul.navigation{
+    background-color: #efefef;
+    padding: 10px;
+    text-align: center;
+}
+ul.navigation li{
+    display: inline;
+    padding: 10px;
+}
+
+ul.navigation li:hover{
+    /* background-color: red; */
+    border-bottom: 3px solid red;
+    cursor: pointer;
+    color: red;
+}
+.test1{
+    visibility: collapse;
+}
