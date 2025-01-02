@@ -26,7 +26,7 @@ ul.navigation{
     text-align: center;
 }
 ul.navigation li{
-    display: inline;
+    /* display: inline; */
     padding: 10px;
 }
 
