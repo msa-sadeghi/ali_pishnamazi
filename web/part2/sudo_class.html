@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /*.wrapper span:first-child {
+        background-color: red;
+      }
+      .wrapper p:first-of-type {
+        background-color: green;
+      }
+      .wrapper :last-child {
+        background-color: purple;
+      }
+      .wrapper p:last-of-type {
+        background-color: green;
+      }
+      .wrapper :not(p) {
+        background-color: yellow;
+      }
+      .wrapper :nth-child(4) {
+        background-color: brown;
+      }*/
+      .wrapper :nth-last-child(3) {
+        background-color: red;
+      }
+      .wrapper p:nth-last-of-type(3) {
+        background-color: green;
+      }
+      .wrapper p:nth-of-type(2) {
+        background-color: yellow;
+      }
+
+      .wrapper header:only-of-type {
+        background-color: cyan;
+      }
+      .wrapper div:only-child {
+        background-color: blue;
+      }
+      table {
+        border: 1px solid black;
+      }
+      th,
+      td {
+        text-align: center;
+        border: 1px solid red;
+      }
+      table tbody tr:nth-child(odd) {
+        background-color: gray;
+      }
+      table tbody tr:nth-child(even) {
+        background-color: cyan;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- <div class="wrapper">
+      <span>span number one</span>
+      <div>div number one</div>
+      <p class="x">this is first paragraph</p>
+      <p class="x">this is second paragraph</p>
+      <p class="x">this is third paragraph</p>
+      <header>test</header>
+      <p>this is another paragraph one</p>
+      <p>this is another paragraph two</p>
+      <p>this is another paragraph three</p>
+      <span>this is another span</span>
+      <div>this is the last div</div>
+      <div>
+        <div>testssssss</div>
+      </div>
+    </div> -->
+
+    <table>
+      <thead>
+        <th>one</th>
+        <th>one</th>
+        <th>one</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>b</td>
+          <td>b</td>
+          <td>b</td>
+        </tr>
+        <tr>
+          <td>b</td>
+          <td>b</td>
+          <td>b</td>
+        </tr>
+        <tr>
+          <td>b</td>
+          <td>b</td>
+          <td>b</td>
+        </tr>
+        <tr>
+          <td>b</td>
+          <td>b</td>
+          <td>b</td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>
