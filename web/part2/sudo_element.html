@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      p::first-line {
+        /*background-color: red;*/
+      }
+      p::first-letter {
+        color: red;
+        font-size: 45px;
+      }
+      span::before {
+        content: url(./google.png);
+      }
+      .test1 {
+        width: 300px;
+        height: 300px;
+        background-color: rgba(255, 0, 0, 0.2);
+        /*opacity: 0.2;*/
+      }
+      .test2 {
+        height: 60px;
+        /*background-color: rgba(0, 255, 0, 0.7);*/
+        background: rgb(2, 0, 36);
+        background: linear-gradient(
+          90deg,
+          rgba(2, 0, 36, 1) 0%,
+          rgba(9, 9, 121, 1) 65%,
+          rgba(0, 212, 255, 1) 100%
+        );
+      }
+      div.test3 {
+        width: 600px;
+        height: 300px;
+        border: 10px solid red;
+        border-image-source: url(./border.png);
+        border-image-width: 50px;
+        border-image-repeat: round;
+        border-image-slice: 10;
+      }
+    </style>
+  </head>
+  <body>
+    <p>
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime vero
+      sequi aut eveniet eum, perferendis voluptatibus error enim laudantium
+      impedit veniam laboriosam facilis culpa atque aliquid incidunt, aspernatur
+      explicabo voluptates.
+    </p>
+    <span>oogle</span>
+
+    <div class="test1">
+      <div class="test2">test content</div>
+    </div>
+    <div class="test3"></div>
+  </body>
+</html>
