@@ -3,6 +3,7 @@ import os
 import pygame
 import math
 from bullet import Bullet
+from healthbar import HealthBar
 class Castle(Sprite):
     def __init__(self, x,y):
         super().__init__()
@@ -17,8 +18,10 @@ class Castle(Sprite):
         self.image = self.images[0]
         self.rect = self.image.get_rect(topleft = (x,y))
         self.bullet_shooted = False
+        self.healthbar = HealthBar()
     def draw(self, screen):
         screen.blit(self.image, self.rect)
+        self.healthbar.update(screen, self.health)
         
     def shoot(self, group):
         if pygame.mouse.get_pressed()[0] and not self.bullet_shooted:

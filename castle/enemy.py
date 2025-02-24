@@ -29,8 +29,10 @@ class Enemy(Sprite):
         self.last_image_change_time = 0
         self.last_move_time = 0
         self.speed = speed
+        self.last_injury_time = pygame.time.get_ticks()
         
-    def update(self):
+        
+    def update(self, castle):
         if pygame.time.get_ticks() - self.last_move_time > 100:
             self.last_move_time = pygame.time.get_ticks()
             self.rect.x += self.speed
@@ -40,6 +42,16 @@ class Enemy(Sprite):
             self.frame_index += 1
             if self.frame_index >= len(self.all_images[self.action]):
                 self.frame_index = 0
+
+        if self.rect.colliderect(castle.rect):
+            if pygame.time.get_ticks() - self.last_injury_time > 1000:
+                self.last_injury_time = pygame.time.get_ticks()
+                castle.health -= self.injury_amount
+                self.speed = 0
+                self.action = "attack"
+
+            
+
         
  
         
