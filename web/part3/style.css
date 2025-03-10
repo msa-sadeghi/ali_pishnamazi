@@ -1,0 +1,29 @@
+@import url(./colors.css);
+body{
+    background-color: var(--primary-color);
+}
+.test1, .test2{
+    color: var(--third-color);
+    background-color: var(--secondary-color);
+}
+.test3, .test4{
+    color: cyan;
+    background-color: var(--third-color);
+}
+
+
+.first{
+    background-color: green;
+}
+.second{
+    background-color: blue;
+}
+
+@media screen and (max-width:1042px){
+    body{
+        background-color: green;
+    }
+    .first{
+        display: none;
+    }
+}
