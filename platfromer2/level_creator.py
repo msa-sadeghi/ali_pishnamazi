@@ -1,102 +1,80 @@
+# اضافه کردن اسکرول
+
 import pygame
-from button import Button
-
-WIDTH = 800
-HEIGHT = 640
-SIDE_MARGIN = 300
-LOWER_MATGIN = 100
-ROWS = 16
-MAX_COLS = 150
-TILE_SIZE = HEIGHT // ROWS
-TILE_TYPES = 21
-level = 0
-scroll = 0
-scroll_speed = 1
-scroll_left, scroll_right = (False, False)
-
-pine1_image = pygame.image.load("./assets/images/background/pine1.png")
-pine2_image = pygame.image.load("./assets/images/background/pine2.png")
-mountain_image = pygame.image.load("./assets/images/background/mountain.png")
-sky_image = pygame.image.load("./assets/images/background/sky_cloud.png")
-
-image_list = [
-    pygame.transform.scale(
-        pygame.image.load(f"./assets/images/tile/{i}.png") ,
-        (TILE_SIZE, TILE_SIZE)
-    )
-    for i in range(21)
-]
-current_tile = 0
-button_list = []
-col = 0
-row = 0
-for i in range(len(image_list)):
-    tile = Button(
-        WIDTH + 50 + col * 75,
-        50 + row * 75,
-        image_list[i],
-        1
-    )
-    button_list.append(tile)
-    col += 1
-    if col == 3:
-        col = 0
-        row += 1
-    
-
-
-
-def draw_bg():
-    screen.fill("green")
-    width = sky_image.get_width()
-    for i in range(4):
-        screen.blit(sky_image, (i * width - scroll * 0.4, 0))
-        screen.blit(mountain_image, (i * width - scroll * 0.5, HEIGHT - mountain_image.get_height() - 300))
-        screen.blit(pine1_image, (i * width - scroll * 0.6, HEIGHT - pine1_image.get_height() - 150))
-        screen.blit(pine2_image, (i * width - scroll * 0.7, HEIGHT - pine2_image.get_height() ))
-
-def draw_grid():
-    for i in range(MAX_COLS + 1):
-        pygame.draw.line(screen, "white", (i * TILE_SIZE - scroll,0), (i * TILE_SIZE - scroll,HEIGHT))
-        
-    for j in range(ROWS + 1):
-        pygame.draw.line(screen, "white", (0, j * TILE_SIZE), (WIDTH, j * TILE_SIZE))
-    
-
-
-screen = pygame.display.set_mode((WIDTH + SIDE_MARGIN, HEIGHT + LOWER_MATGIN))
+import button
+import csv
+import pickle
+pygame.init()
 clock = pygame.time.Clock()
 FPS = 60
-running = True
-while running:
+
+SCREEN_WIDTH = 800
+SCREEN_HEIGHT = 640
+LOWER_MARGIN = 100
+SIDE_MARGIN = 300
+screen = pygame.display.set_mode(
+    (SCREEN_WIDTH + SIDE_MARGIN, SCREEN_HEIGHT + LOWER_MARGIN))
+pygame.display.set_caption('Level Editor')
+
+
+# define game variables
+scroll_left = False
+scroll_right = False
+scroll = 0
+scroll_speed = 1
+
+
+pine1_img = pygame.image.load('img/Background/pine1.png').convert_alpha()
+pine2_img = pygame.image.load('img/Background/pine2.png').convert_alpha()
+mountain_img = pygame.image.load('img/Background/mountain.png').convert_alpha()
+sky_img = pygame.image.load('img/Background/sky_cloud.png').convert_alpha()
+
+GREEN = (144, 201, 120)
+WHITE = (255, 255, 255)
+RED = (200, 25, 25)
+# create function for drawing background
+def draw_bg():
+    screen.fill(GREEN)
+    width = sky_img.get_width()
+# عدد 4 انتخابی هست یعنی چند بار تصویر تکرار شود
+    for x in range(4):
+        # 0.5    0.6    0.7   0.8    برای سرعت های متفاوت
+        screen.blit(sky_img, ((x * width) - scroll * 0.5, 0))
+        screen.blit(mountain_img, ((x * width) - scroll * 0.6,
+                    SCREEN_HEIGHT - mountain_img.get_height() - 300))
+        screen.blit(pine1_img, ((x * width) - scroll * 0.7,
+                    SCREEN_HEIGHT - pine1_img.get_height() - 150))
+        screen.blit(pine2_img, ((x * width) - scroll * 0.8,
+                    SCREEN_HEIGHT - pine2_img.get_height()))
+run = True
+while run:
+    clock.tick(FPS)
+    draw_bg()
+    # scroll the map
+    if scroll_left == True and scroll > 0:
+        scroll -= 5 * scroll_speed
+    if scroll_right == True:
+        scroll += 5 * scroll_speed
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            running = False   
+            run = False
+        # keyboard presses
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT:
-                scroll_left = True  
+                scroll_left = True
             if event.key == pygame.K_RIGHT:
-                scroll_right = True  
+                scroll_right = True
+            # اضافه کردن سرع به اسکرول
             if event.key == pygame.K_RSHIFT:
-                scroll_speed = 5  
+                 scroll_speed = 5
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_LEFT:
-                scroll_left = False  
+                scroll_left = False
             if event.key == pygame.K_RIGHT:
-                scroll_right = False  
+                scroll_right = False
+            # گرفتن سرعت اسکرول
             if event.key == pygame.K_RSHIFT:
-                scroll_speed = 1 
-    
-    draw_bg()
-    draw_grid()
-    pygame.draw.rect(screen, "green", (WIDTH, 0, SIDE_MARGIN, HEIGHT + LOWER_MATGIN))
-    for i in range(len(button_list)):
-        if button_list[i].draw(screen):
-            current_tile = i
-    pygame.draw.rect(screen, "red", button_list[current_tile].rect, 2)        
-    if scroll_left and scroll > 0:
-        scroll -= 5 * scroll_speed
-    if scroll_right:
-        scroll += 5 * scroll_speed
+                scroll_speed = 1
+
     pygame.display.update()
-    clock.tick(FPS)
+pygame.quit()
