@@ -23,19 +23,27 @@ scroll_right = False
 scroll = 0
 scroll_speed = 1
 
+MAX_COLS = 150
+ROW = 16
 
-pine1_img = pygame.image.load('img/Background/pine1.png').convert_alpha()
-pine2_img = pygame.image.load('img/Background/pine2.png').convert_alpha()
-mountain_img = pygame.image.load('img/Background/mountain.png').convert_alpha()
-sky_img = pygame.image.load('img/Background/sky_cloud.png').convert_alpha()
+TILE_SIZE = SCREEN_HEIGHT // ROW
+
+
+
+pine1_img = pygame.image.load('assets/images/background/pine1.png')
+pine2_img = pygame.image.load('assets/images/background/pine2.png')
+mountain_img = pygame.image.load('assets/images/background/mountain.png')
+sky_img = pygame.image.load('assets/images/background/sky_cloud.png')
 
 GREEN = (144, 201, 120)
 WHITE = (255, 255, 255)
 RED = (200, 25, 25)
 # create function for drawing background
 def draw_bg():
+    global max_width 
     screen.fill(GREEN)
     width = sky_img.get_width()
+    max_width = 4 * width
 # عدد 4 انتخابی هست یعنی چند بار تصویر تکرار شود
     for x in range(4):
         # 0.5    0.6    0.7   0.8    برای سرعت های متفاوت
@@ -46,6 +54,14 @@ def draw_bg():
                     SCREEN_HEIGHT - pine1_img.get_height() - 150))
         screen.blit(pine2_img, ((x * width) - scroll * 0.8,
                     SCREEN_HEIGHT - pine2_img.get_height()))
+
+def draw_grid():
+
+    for i in range(ROW + 1):
+        pygame.draw.line(screen, "white", (0, i * TILE_SIZE), (SCREEN_WIDTH, i * TILE_SIZE))
+    
+
+
 run = True
 while run:
     clock.tick(FPS)
@@ -53,7 +69,9 @@ while run:
     # scroll the map
     if scroll_left == True and scroll > 0:
         scroll -= 5 * scroll_speed
-    if scroll_right == True:
+    if scroll < 0:
+        scroll = 0
+    if scroll_right == True and scroll < max_width:
         scroll += 5 * scroll_speed
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -75,6 +93,7 @@ while run:
             # گرفتن سرعت اسکرول
             if event.key == pygame.K_RSHIFT:
                 scroll_speed = 1
-
+    draw_grid()
+    pygame.draw.rect(screen, "lightgreen", (SCREEN_WIDTH, 0, SIDE_MARGIN, screen.get_height()))
     pygame.display.update()
 pygame.quit()
