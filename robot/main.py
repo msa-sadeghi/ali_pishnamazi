@@ -29,6 +29,10 @@ while running == True:
         my_player.change_animation("Slide")
     elif my_player.run_shoot:
         my_player.change_animation('RunShoot')
+    elif my_player.jump_shoot:
+        my_player.change_animation('JumpShoot')
+    elif my_player.shoot_:
+        my_player.change_animation('Shoot')
     elif my_player.idle:
         my_player.change_animation("Idle")
 

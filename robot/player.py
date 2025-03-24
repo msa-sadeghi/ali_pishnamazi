@@ -31,8 +31,9 @@ class Player(Sprite):
         self.in_air = False
         self.sliding = False
         self.health = 100
+        self.shoot_ = False
         self.run_shoot = False
-
+        self.jump_shoot = False
       
 
     def draw(self, screen):
@@ -90,12 +91,18 @@ class Player(Sprite):
             dx  += self.direction * 10
         if not keys[pygame.K_DOWN]:
             self.sliding = False
+        if keys[pygame.K_SPACE] and keys[pygame.K_UP] :
+            self.jump_shoot = True
         if keys[pygame.K_SPACE]:
-            dx  += self.direction * 5
-            self.run_shoot = True
+            self.shoot_ = True
             self.shoot(bullet_group)
+        if keys[pygame.K_SPACE] and (keys[pygame.K_LEFT] or keys[pygame.K_RIGHT]):
+            self.run_shoot = True
+
         if not keys[pygame.K_SPACE]:
             self.run_shoot = False
+            self.jump_shoot = False
+            self.shoot_ = False
             
         dy += self.y_velocity   
         self.y_velocity += 1 
