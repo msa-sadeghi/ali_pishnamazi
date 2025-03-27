@@ -194,12 +194,31 @@
     }
 }
 
+*, body{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
 .container-fluid{
     width: 100%;
 }
 .container{
+    clear: both;
     max-width : 1200px;
     /* margin-left: auto;
     margin-right: auto; */
     margin: 0 auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+[class ^= "col-"]{
+ float: left;
+ padding-left: 15px;
+ padding-right: 15px;
+}
+.row::after{
+    content: '';
+    clear: both;
+    display: table;
 }
