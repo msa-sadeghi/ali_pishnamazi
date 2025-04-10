@@ -4,6 +4,7 @@ import pygame
 import button
 import csv
 import pickle
+from button import Button
 pygame.init()
 clock = pygame.time.Clock()
 FPS = 60
@@ -27,6 +28,25 @@ MAX_COLS = 150
 ROW = 16
 
 TILE_SIZE = SCREEN_HEIGHT // ROW
+
+tiles_images = [
+    pygame.trasform.scale(
+    pygame.image.load(f'assets/images/tiles/{i}.png'), (TILE_SIZE, TILE_SIZE))
+    
+    for i in range(20)
+]
+
+
+tiles_btns = []
+row_id = 0
+col_id = 0
+for i in range(len(tiles_images)):
+    tile_btn = Button(SCREEN_WIDTH + col_id * 100, row_id * 100, tiles_images[i], 1)
+    col_id += 1
+    if col_id == 3:
+        col_id = 0
+        row_id += 1
+    tiles_btns.append(tile_btn)
 
 
 
