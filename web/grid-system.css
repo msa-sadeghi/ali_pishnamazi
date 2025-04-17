@@ -439,3 +439,16 @@
     clear: both;
     display: table;
 }
+
+.img-responsive{
+    width: 100%;
+    height: auto;
+}
+
+.box-shadow{
+    box-shadow: 4px 0px 4px 3px #000;;
+}
+
+ul{
+    list-style: none;
+}

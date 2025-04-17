@@ -26,12 +26,12 @@ scroll_speed = 1
 
 MAX_COLS = 150
 ROW = 16
-
+current_tile = 0
 TILE_SIZE = SCREEN_HEIGHT // ROW
 
 tiles_images = [
-    pygame.trasform.scale(
-    pygame.image.load(f'assets/images/tiles/{i}.png'), (TILE_SIZE, TILE_SIZE))
+    pygame.transform.scale(
+    pygame.image.load(f'assets/images/tile/{i}.png'), (TILE_SIZE, TILE_SIZE))
     
     for i in range(20)
 ]
@@ -41,15 +41,21 @@ tiles_btns = []
 row_id = 0
 col_id = 0
 for i in range(len(tiles_images)):
-    tile_btn = Button(SCREEN_WIDTH + col_id * 100, row_id * 100, tiles_images[i], 1)
+    tile_btn = Button(SCREEN_WIDTH + col_id * 70 + 70, row_id * 70 + 40, tiles_images[i], 1)
     col_id += 1
     if col_id == 3:
         col_id = 0
         row_id += 1
     tiles_btns.append(tile_btn)
 
-
-
+world_data = []
+for row in range(ROW):
+    r = []
+    for col in range(MAX_COLS):
+        r.append(-1)
+    world_data.append(r)
+def draw_world():
+    pass
 pine1_img = pygame.image.load('assets/images/background/pine1.png')
 pine2_img = pygame.image.load('assets/images/background/pine2.png')
 mountain_img = pygame.image.load('assets/images/background/mountain.png')
@@ -117,5 +123,7 @@ while run:
                 scroll_speed = 1
     draw_grid()
     pygame.draw.rect(screen, "lightgreen", (SCREEN_WIDTH, 0, SIDE_MARGIN, screen.get_height()))
+    for btn in tiles_btns:
+        btn.draw(screen)
     pygame.display.update()
 pygame.quit()
