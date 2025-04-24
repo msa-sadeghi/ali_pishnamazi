@@ -55,7 +55,10 @@ for row in range(ROW):
         r.append(-1)
     world_data.append(r)
 def draw_world():
-    pass
+    for i in range(ROW):
+        for j in range(MAX_COLS):
+            if world_data[i][j] != -1:
+                screen.blit(tiles_images[world_data[i][j]], (j * TILE_SIZE - scroll, i * TILE_SIZE))
 pine1_img = pygame.image.load('assets/images/background/pine1.png')
 pine2_img = pygame.image.load('assets/images/background/pine2.png')
 mountain_img = pygame.image.load('assets/images/background/mountain.png')
@@ -122,8 +125,20 @@ while run:
             if event.key == pygame.K_RSHIFT:
                 scroll_speed = 1
     draw_grid()
+    mouse_pos = pygame.mouse.get_pos()
+    col = (mouse_pos[0] + scroll) // TILE_SIZE
+    
+    row = mouse_pos[1] // TILE_SIZE
+    if pygame.mouse.get_pressed()[0]:
+        if mouse_pos[0] < SCREEN_WIDTH and mouse_pos[1] < SCREEN_HEIGHT:
+            
+                world_data[row][col] = current_tile
+
     pygame.draw.rect(screen, "lightgreen", (SCREEN_WIDTH, 0, SIDE_MARGIN, screen.get_height()))
     for btn in tiles_btns:
-        btn.draw(screen)
+        if btn.draw(screen):
+            current_tile = tiles_btns.index(btn)
+            
+    draw_world()
     pygame.display.update()
 pygame.quit()

@@ -1,5 +1,11 @@
+@import url(../../grid-system.css);
+
 .gray-color{
     background-color: gray;
+    
+}
+.blue-color{
+    /* background-color: rgb(17, 56, 233); */
 }
 
 nav{
