@@ -1,0 +1,128 @@
+.transform{
+    margin: 80px;
+    width: 200px;
+    height: 150px;
+    background-color: green;
+    
+}
+
+.transform:hover{
+    transform: translate(-30px, -50px) rotate(90deg) scale(2) skewY(40deg);
+}
+
+.prespective{
+    position: relative;
+    width: 200px;
+    height: 150px;
+    background-color: red;
+    margin: 40px;
+    perspective: 100px;
+}
+
+.test{
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    top: 50%;
+    left:50%;
+
+    background-color: yellow;
+    transform-style: preserve-3d;
+    transform: rotateX(45deg) translate(-50%, -50%);
+}
+
+.test2, .test3{
+    width: 100px;
+    height: 100px;
+    margin: 80px;
+    background-color: blue;
+    color: white;
+    transform: rotateY(180deg);
+}
+
+ .test2{
+    backface-visibility: visible;
+}
+
+.test2:hover{
+    backface-visibility: hidden;
+}
+
+a{
+    background-color: lightblue;
+    display: inline-block;
+    width:80px;
+    color: white;
+    text-decoration: none;
+    padding: 5px 10px;
+    transition-property: all;
+    transition-duration: 2s;
+    transition-delay: 1s;
+    transition-timing-function: linear;
+}
+
+a:hover{
+    background-color: blue;
+    width: 200px;
+}
+
+.anime{
+    margin:100px;
+    width: 100px;
+    height: 100px;
+    background-color: green;
+    animation-name: changeColor;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+
+}
+@keyframes changeColor {
+    from{
+        background-color: blue;
+    }
+    to{
+        background-color: red;
+    }
+}
+
+
+.anime2{
+    margin:100px;
+    width: 100px;
+    height: 100px;
+    background-color: green;
+    animation-name: change;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    position: relative;
+
+}
+
+@keyframes change {
+    0%{
+        background-color: green;
+        top: 0;
+        left: 0;
+    }
+
+    25%{
+        top: 0;
+        left: 200px;
+        background-color: yellow;
+    }
+    50%{
+        top: 200px;
+        left: 200px;
+        background-color: blue;
+    }
+    75%{
+        top: 200px;
+        left: 0;
+        background-color: blue;
+    }
+    100%{
+        top: 0;
+        left: 0;
+        background-color: black;
+    }
+}
