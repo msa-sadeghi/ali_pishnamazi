@@ -23,8 +23,12 @@ scroll_left = False
 scroll_right = False
 scroll = 0
 scroll_speed = 1
-
 MAX_COLS = 150
+level = 1
+
+font = pygame.font.SysFont("arial", 15)
+level_text = font.render(f"level: {level}", True, "red")
+
 ROW = 16
 current_tile = 0
 TILE_SIZE = SCREEN_HEIGHT // ROW
@@ -103,6 +107,12 @@ while run:
             # اضافه کردن سرع به اسکرول
             if event.key == pygame.K_RSHIFT:
                  scroll_speed = 5
+            if event.key == pygame.K_UP:
+                 level += 1
+            if event.key == pygame.K_DOWN:
+                 level -= 1
+                 if level < 1:
+                     level = 1
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_LEFT:
                 scroll_left = False
@@ -111,6 +121,7 @@ while run:
             # گرفتن سرعت اسکرول
             if event.key == pygame.K_RSHIFT:
                 scroll_speed = 1
+            
     screen.fill("lightpink")
     draw_grid()
     mouse_pos = pygame.mouse.get_pos()
@@ -121,7 +132,8 @@ while run:
         if mouse_pos[0] < SCREEN_WIDTH and mouse_pos[1] < SCREEN_HEIGHT:
             
                 world_data[row][col] = current_tile
-
+    if pygame.mouse.get_pressed()[2]:
+        world_data[row][col] = -1
     pygame.draw.rect(screen, "lightgreen", (SCREEN_WIDTH, 0, SIDE_MARGIN, screen.get_height()))
     for btn in tiles_btns:
         if btn.draw(screen):
@@ -131,5 +143,7 @@ while run:
     if save_btn.draw(screen):
         pass       
     draw_world()
+    level_text = font.render(f"level: {level}", True, "red")
+    screen.blit(level_text, (SCREEN_WIDTH + 20,0))
     pygame.display.update()
 pygame.quit()

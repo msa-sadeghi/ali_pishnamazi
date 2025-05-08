@@ -91,11 +91,14 @@ a:hover{
     width: 100px;
     height: 100px;
     background-color: green;
+    
+    position: relative;
+
+}
+.anime2:hover{
     animation-name: change;
     animation-duration: 2s;
     animation-iteration-count: infinite;
-    position: relative;
-
 }
 
 @keyframes change {
