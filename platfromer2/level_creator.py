@@ -85,6 +85,8 @@ def draw_bg():
                     SCREEN_HEIGHT - pine2_img.get_height()))
 
 def draw_grid():
+    """
+    """
 
     for i in range(ROW + 1):
         pygame.draw.line(screen, "white", (0, i * TILE_SIZE), (SCREEN_WIDTH, i * TILE_SIZE))

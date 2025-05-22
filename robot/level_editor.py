@@ -139,9 +139,11 @@ while run:
         if btn.draw(screen):
             current_tile = tiles_btns.index(btn)
     if load_btn.draw(screen):
-        pass
+        with open(f"level{level}", "rb") as f:
+            world_data =pickle.load(f) 
     if save_btn.draw(screen):
-        pass       
+        with open(f"level{level}", "wb") as f:
+            pickle.dump(world_data, f)       
     draw_world()
     level_text = font.render(f"level: {level}", True, "red")
     screen.blit(level_text, (SCREEN_WIDTH + 20,0))

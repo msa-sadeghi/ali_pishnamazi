@@ -1,0 +1,39 @@
+.container{
+    background-color: orangered;
+    display: grid;
+    padding: 10px;
+    /* grid-template-columns:auto auto auto auto auto; */
+    /* grid-template-rows: auto auto auto; */
+    /* grid-column-gap: 10px;
+    grid-row-gap: 10px; */
+    grid-gap: 10px;
+    /* justify-content: start;
+    align-items: stretch; */
+    grid-template-areas: 'area area . .' 'area area . .';
+
+}
+.container > div{
+    font-size: 28px;
+    background-color: orange;
+    padding: 25px 0;
+}
+
+
+.child1{
+    grid-area: area;
+}
+/* .child1{
+    
+   
+    grid-column: 1/2;
+    grid-row: 1/3;
+    
+}
+
+.child5{
+    grid-column: 2/ 5;
+    grid-row: 2/3;
+}
+.child2{
+    grid-area: 1/2/2/4;
+} */
