@@ -9,7 +9,7 @@
     grid-gap: 10px;
     /* justify-content: start;
     align-items: stretch; */
-    grid-template-areas: 'area area . .' 'area area . .';
+    grid-template-areas: 'area area . .' ;
 
 }
 .container > div{
