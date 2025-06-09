@@ -3,7 +3,6 @@
 
 -- SELECT city, count(*) AS count FROM branch
 -- GROUP BY city
-SELECT street FROM branch
-WHERE city IN
-(SELECT city FROM branch
-GROUP BY city)
+
+SELECT city FROM branch
+GROUP BY city ORDER BY city DESC
