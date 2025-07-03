@@ -1,0 +1,11 @@
+.cards{
+    
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    /* grid-template-columns: 1fr 2fr 1fr; */
+    gap: 20px;
+}
+
+.card{
+    background-color: red;
+}
