@@ -1,0 +1,15 @@
+.card{
+    background-color: red;
+    padding: 25px;
+}
+
+.container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    
+    gap: 10px;
+}
+
+.container :nth-child(4){
+    grid-column: 2/3;
+}

@@ -1,0 +1,51 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+i{
+    font-size: 30px;
+    color: red;
+}
+
+#myCheckBox{
+    display: none;
+}
+
+ul{
+    list-style: none;
+    width: 100%;
+    height: 100vh;
+    background-color: tomato;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity .5s ease;
+}
+ul li{
+    padding: 30px;
+}
+label{
+    position: absolute;
+    padding: 10px;
+    z-index: 123;
+}
+label i:nth-child(2){
+    opacity: 0;
+}
+
+input[type="checkbox"]:checked ~ ul{
+    opacity: 1;
+}
+
+input[type="checkbox"]:checked ~ label{
+    right: 0;
+}
+input[type="checkbox"]:checked ~ label i:first-child{
+    opacity: 0;
+}
+input[type="checkbox"]:checked ~ label i:last-child{
+    opacity: 1;
+}
