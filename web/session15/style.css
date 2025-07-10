@@ -1,0 +1,50 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+i{
+    font-size: 40px;
+}
+input[type="checkbox"]{
+    display: none;
+}
+.menu{
+    background-color: tomato;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    opacity: 0;
+    
+    
+}
+.menu li{
+    text-align: center;
+    width: 100%;
+    padding: 20px 0;
+}
+.menu li::after{
+ 
+}
+label{
+    position: absolute;
+    z-index: 1;
+}
+label i:last-child{
+    opacity: 0;
+}
+input[type="checkbox"]:checked ~ ul.menu{
+    opacity: 1;
+}
+input[type="checkbox"]:checked ~ label{
+    right: 0;
+}
+input[type="checkbox"]:checked ~ label i:first-child{
+    opacity: 0;
+}
+input[type="checkbox"]:checked ~ label i:last-child{
+    opacity: 1;
+}
