@@ -1,0 +1,52 @@
+@font-face {
+  font-family: vazir;
+  src: url(./assets/font/Vazir.woff);
+}
+@font-face {
+  font-family: vazir-headings;
+  src: url(./assets/font/Vazir-Bold.woff);
+}
+*,
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: vazir;
+  user-select: none;
+}
+.card-wrapper {
+  perspective: 800px;
+  width: 200px;
+  height: 300px;
+  border: 2px solid red;
+}
+.card {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 1s ease;
+}
+#sth {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.card-back,
+.card-front {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  backface-visibility: hidden;
+}
+.card-back{
+    transform: rotateY(180deg);
+}
+.card:hover{
+    transform: rotateY(180deg);
+}
+.img-responsive{
+    width: 100%;
+}
