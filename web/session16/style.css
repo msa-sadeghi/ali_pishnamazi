@@ -1,0 +1,64 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body, html{
+    height: 100%;
+}
+.container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+aside{
+    width: 30%;
+    height: 100%;
+    background-color: black;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity .1s ease;
+    overflow: auto;
+}
+
+aside ul li{
+    list-style: none;
+    margin-bottom: 20px;
+}
+
+main{
+    width: 70%;
+    height: 100%;
+    background-color: gray;
+    transition: left .1s ease;
+    overflow: auto;
+}
+
+.container i{
+    padding: 15px;
+    position: absolute;
+    color: white;
+    font-size: 28px;
+    left: 30%;
+    z-index: 1;
+    transition: left .1s linear;
+}
+
+input#ch {
+    display: none;
+}
+
+input#ch:checked ~ aside {
+    opacity: 0;
+}
+input#ch:checked ~ main {
+    position: absolute;
+    width: 100%;
+    left: 0;
+}
+
+input#ch:checked ~ label i{
+    left: 0;
+}
