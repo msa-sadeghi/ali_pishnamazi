@@ -1,0 +1,83 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html, body, #first, #second, #third{
+    width: 100%;
+    height: 100%;
+}
+#third{
+    display: flex;
+}
+a{
+    text-decoration: none;
+    color: white;
+    font-size: 30px;
+}
+aside{
+    width: 20%;
+    height: 100%;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+main{
+    width: 80%;
+    height: 100%;
+    background-color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+#first:target main #page1{
+    opacity: 1;
+    left: 0;
+}
+#first:target main #page2{
+    opacity: 0;
+}
+#first:target main #page3{
+    opacity: 0;
+}
+#second:target main #page1{
+    opacity: 0;
+}
+#second:target main #page2{
+    opacity: 1;
+    left: 0;
+}
+#second:target main #page3{
+    opacity: 0;
+}
+#third:target main #page1{
+    opacity: 0;
+}
+#third:target main #page2{
+    opacity: 0;
+}
+#third:target main #page3{
+    opacity: 1;
+    left: 0;
+}
+main > div{
+width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 100%;
+}
+#page1{
+    
+    background-color: green;
+}
+#page2{
+    background-color: purple;
+    opacity: 0;
+}
+#page3{
+    background-color: tomato;
+    opacity: 0;
+}
