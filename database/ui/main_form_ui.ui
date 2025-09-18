@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1017</width>
+    <height>655</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>مدیریت</string>
+  </property>
+  <property name="layoutDirection">
+   <enum>Qt::RightToLeft</enum>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>130</y>
+      <width>691</width>
+      <height>281</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>B Titr</family>
+      <pointsize>45</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>مدیریت مدرسه</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1017</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu">
+    <property name="font">
+     <font>
+      <family>B Nazanin</family>
+      <pointsize>12</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="title">
+     <string>فایل</string>
+    </property>
+    <addaction name="exit_menu"/>
+   </widget>
+   <widget class="QMenu" name="menu_2">
+    <property name="title">
+     <string>دانش آموزان</string>
+    </property>
+    <addaction name="students_menu"/>
+   </widget>
+   <widget class="QMenu" name="menu_3">
+    <property name="title">
+     <string> کلاس ها</string>
+    </property>
+    <addaction name="classes_menu"/>
+   </widget>
+   <widget class="QMenu" name="menu_4">
+    <property name="title">
+     <string>درس ها</string>
+    </property>
+    <addaction name="subjects_menu"/>
+   </widget>
+   <widget class="QMenu" name="menu_5">
+    <property name="title">
+     <string>ثبت نام</string>
+    </property>
+    <addaction name="enrollments_menu"/>
+   </widget>
+   <addaction name="menu"/>
+   <addaction name="menu_2"/>
+   <addaction name="menu_3"/>
+   <addaction name="menu_4"/>
+   <addaction name="menu_5"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="exit_menu">
+   <property name="text">
+    <string>خروج</string>
+   </property>
+   <property name="font">
+    <font>
+     <family>B Nazanin</family>
+     <pointsize>16</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+  </action>
+  <action name="students_menu">
+   <property name="text">
+    <string>مدیریت  دانش آموزان</string>
+   </property>
+  </action>
+  <action name="classes_menu">
+   <property name="text">
+    <string>مدیریت کلاس ها</string>
+   </property>
+  </action>
+  <action name="subjects_menu">
+   <property name="text">
+    <string>مدیریت درس ها</string>
+   </property>
+  </action>
+  <action name="enrollments_menu">
+   <property name="text">
+    <string>مدیریت ثبت نام ها</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
