@@ -1,84 +1,46 @@
-// var a = 12
-// var b = 13
-// var c = 15
-
-// var max = a
-
-// if (b > max) max = b
-// if (c > max) max = c
-
-// console.log(max)
-
-// console.log(Math.max(a,b,c))
-
-
-// var text = "python vs js"
-
-// console.log(text.split('').reverse().join(''))
-
-// var str = `string
-// `
-// console.log(str[0])
-// console.log(str[str.length-1])
-
-// یک برنامه ثبت نام بنویسید
-
-// به این شکل که کاربر برای ثبت نام
-//  در سایت باید یوزرنیم و پسورد را ثبت کند
-
-// محدودیت موجود این است که یوزرنیم حداقل باید 3 کاراکتر
-//  و پسورد حداقل باید 8 کاراکتر داشته باشد
-
-// در غیر این صورت پیغام مناسب را به کاربر نمایش دهید
-
-// var x = Number("ali")
-// console.log(typeof x)
+// var x = 0;
+// var y = ++x;
+// console.log(y)
 // console.log(x)
 
-// var text = "I love python "
-// console.log(text[2])
-// console.log(text.charAt(2))
-// console.log(text.charCodeAt(2))
-// console.log(text + " & js")
-// console.log(text.concat(" & js"))
-// console.log(text.trim())
-// console.log(text.search('python'))
-// console.log(text.indexOf('python'))
-// console.log(text.includes('python'))
-// console.log(text.toLowerCase())
+// for(let i = 0; i < 3; i++){
+//     console.log(`${i}- hi`)
+// }
 
-// یک سیستم لاگین پیاده سازی کنید
-// به این صورت که از کاربر یوزرنیم
-//  رو میگیرین و چک می کنین لاگین هست یا نه
-// فقط کاربر با یوزرنیم
-// ali
-// میتونه لاگین کنه
+// var name = 'nikan';
+// for(let i = 0; i < name.length; i++){
+//     console.log(`${name[i]}`)
+// }
 
-// نکته: این پروژه نباید به حروف کوچیک و بزرگ حساب باشد
+// اعداد زوج بین 0 تا 100 را در کنسول چاپ کنید
 
 
-// console.log("python".replace('o', '0'))
+// فرض کنید یک وب سایت فروشگاهی دارید
+//  که کاربر 5 محصول از فروشگاه را انتخاب کرده است
+
+// قیمت 5 محصول را از کاربر گرفته
+//  و مجموع مبلغ کل سبد خرید رو نمایش دهید
 
 
-// var text = "I love python"
-// console.log(text.slice(1,4))
-// console.log(text.substring(1,4))
-// console.log(text.slice(-1))
-// console.log(text.substring(-1))
-// console.log(text.slice(5,0))
-// console.log(text.substring(5,0))
+// عددی را از کاربر دریافت کرده و سپس مجموع رقم های آن را محاسبه کنید.
 
-console.log(Math.PI)
-console.log(Math.pow(2,3))
-console.log(Math.sqrt(4))
-console.log(Math.abs(-4))
+// :به عنوان مثال برای عدد 142 به صورت زیر محاسبه می شود
 
-console.log(Math.min(1,2,3,4))
+// 1 + 4 + 2 = 7
 
-console.log(Math.floor(12.1))
-console.log(Math.ceil(12.1))
-console.log(Math.trunc(12.9))
-console.log(Math.round(12.9))
-console.log(Math.floor(Math.random() * 10))
+var x = 0
+var a;
+var y = true;
+for(var i = 0; i < 5; i++){
+    y = true
+        for(var j = 0; y == true; j++){
+            a = +prompt("enter a number")
+            if (!isNaN(a)){
+                y = false
+            }
+        }
+         
+         x += a
 
-// پروژه ای بنویسین که کد کپچای 5 رقمی به صورت تصادفی تولید کند
+}
+console.log(x)
