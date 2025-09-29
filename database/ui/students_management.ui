@@ -193,7 +193,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="pushButton_add">
    <property name="geometry">
     <rect>
      <x>1020</x>
@@ -213,7 +213,7 @@
     <string>Add</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_2">
+  <widget class="QPushButton" name="pushButton_update">
    <property name="geometry">
     <rect>
      <x>1020</x>
@@ -230,10 +230,10 @@
     </font>
    </property>
    <property name="text">
-    <string>Add</string>
+    <string>Update</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_3">
+  <widget class="QPushButton" name="pushButton_delete">
    <property name="geometry">
     <rect>
      <x>1020</x>
@@ -250,7 +250,17 @@
     </font>
    </property>
    <property name="text">
-    <string>Add</string>
+    <string>Delete</string>
+   </property>
+  </widget>
+  <widget class="QTableWidget" name="tableWidget">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>210</y>
+     <width>1301</width>
+     <height>621</height>
+    </rect>
    </property>
   </widget>
  </widget>

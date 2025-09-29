@@ -8,5 +8,5 @@ login = LoginForm()
 
 if login.exec_() == LoginForm.Accepted:
     window = MainWindow()
-    window.show()
+    window.showFullScreen()
     sys.exit(app.exec_())

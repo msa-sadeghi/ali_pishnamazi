@@ -1,6 +1,6 @@
 from PyQt5.QtWidgets import QMainWindow, QMessageBox
 from ui.main_form import Ui_MainWindow
-
+from forms.student_form import StudentForm
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -17,7 +17,9 @@ class MainWindow(QMainWindow):
         self.close()
 
     def open_students(self):
-        pass
+        window = StudentForm()
+        # window.showFullScreen()
+        window.exec_()
     def open_classes(self):
         pass
     def open_subjects(self):
