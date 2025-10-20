@@ -1,59 +1,72 @@
-// var i = 0;
+// var users = [
+//     "ali", "sara", "matin"
+// ]
 
-// while(i < 5){
-//     console.log(`i${i}`)
-//     i++;
-// }
+// var exists = users.includes("ali")
+// if(exists)
+//     console.log("yes")
+var users = [
+    {id:1, name:"ali2", age:14},
+    {id:2, name:"ali", age:15},
+    {id:3, name:"ali3", age:12}
+]
 
-// do{
-//     console.log(`i${i}`)
-//     i++;
-// }while(i<5)
+// var exists = users.includes({id:1, name:"ali", age:14})
+var exists = users.some(function(user, u){
+    console.log(u)
+    return user.name == "ali"
+})
+if(exists)
+    console.log("yes")
 
-// var array = [1,2,3]
-// console.log(Array.isArray(array))
-// array.push('ali')
-// console.log(array)
-// console.log(array.length)
-// console.log(array[0])
-// for(var i = 0; i < array.length; i++){
-//     console.log(array[i])
-// }
-// array.pop()
-// array.forEach(function(item){
-//     console.log(item)
-// })
+// let allProducts = [
+// 	{id: 1, name: 'Laptop', price: 17000000},
+// 	{id: 2, name: 'Phone', price: 7000000},
+// 	{id: 3, name: 'Pen', price: 12000},
+// 	{id: 4, name: 'Pencil', price: 9000},
+// 	{id: 5, name: 'Eraser', price: 6000},
+// 	{id: 6, name: 'Milk', price: 35000},
+// ]
 
-// var array = [1,2,3]
-// array.shift()
-// array.unshift(123,222)
-// console.log(array)
-var array = [1,2,3,4]
-// array.splice(1,0,222)
-// console.log(array)
-// var newArray = [
-//     ...array.slice(0,1),
-//     1234,22222, ...array.slice(1)
+// let userBasket = [
+// 	{id: 1, name: 'pen', price: 12000},
+// 	{id: 2, name: 'pencil', price: 9000},
 // ]
 
 
-// console.log(newArray)
-
-
-// array.forEach(function(a){
-//     console.log(arguments)
-//     // console.log(args)
-// })
-
-
-// function add(a,e,...b){
-//     // console.log(arguments[0])
-//     console.log(a)
-//     console.log(b)
+// function s(){
+//     console.log(x)
 // }
+// let x = 2
+// s()
 
-// add(1,2,3,4,5)
+
+
+// یک فروشگاه آنلاین پیاده سازی کنید
+
+// به این شکل که محصولات فروشگاه خود را در دیتابیسی ذخیره کرده
+//  (آرایه) و آرایه ای برای سبد خرید کاربر داشته باشید
+// و از کاربر اسم محصولی را که قصد
+//  اضافه کردن به سبد خرید دارد ، دریافت کنید
+
+// اگر محصول درخواستی کاربر در انبار فروشگاه شما موجود بود،
+//  آن را به سبد خرید کاربر اضافه کنید
+// و سپس مبلغ کل سبد خرید را محاسبه کرده و به کاربر نمایش دهید
+// و در غیر این صورت به کاربر پیغام اتمام موجودی نمایش دهید
+
+// :نکات قابل توجه
+// بعد از اضافه محصول به سبد خرید کاربر،
+//  سبد را در کنسول نمایش دهید
+// به طور دیفالت 3 محصول با
+//  قیمت های مختلف در سبد خرید کاربر موجود باشد
 
 
 
-array.forEach((i) => console.log(`item#${i}`))
+// فرض کنید پلتفرمی مثل تلگرام ساخته اید
+//  و چند نفر در آن یک گروه ایجاد کردند
+// و قصد ایجاد تماس کنفرانسی دارند
+
+// اما شرط لازم برای ایجاد تماس
+//  کنفرانسی بالای 18 سال بودن اعضای گروه است
+// اگر تمامی اعضا بالای 18 سال نبودند،
+//  اجازه ایجاد تماس کنفرانسی را ندهید
