@@ -1,72 +1,52 @@
-// var users = [
-//     "ali", "sara", "matin"
+// var userBasket = [
+// 	{id: 1, name: 'laptop', price: 5000000},
+// 	{id: 2, name: 'phone', price: 3000000},
+// 	{id: 3, name: 'milk', price: 35000},
+// 	{id: 4, name: 'water', price: 6000},
+// 	{id: 5, name: 'coolpad', price: 400000},
+// 	{id: 6, name: 'pencil', price: 9000},
 // ]
 
-// var exists = users.includes("ali")
-// if(exists)
-//     console.log("yes")
-var users = [
-    {id:1, name:"ali2", age:14},
-    {id:2, name:"ali", age:15},
-    {id:3, name:"ali3", age:12}
+// let filteredProducts = userBasket.filter(function(product){
+//   return product.price < 10000
+// })
+
+// let postCost = filteredProducts.length * 100
+// let total = 0
+
+// userBasket.forEach(function(p){
+//   total += p.price
+// })
+// total += postCost
+
+// console.log(total)
+
+// let scores = [19, 29, 29, 67]
+// console.log(scores.indexOf(29))
+// console.log(scores.lastIndexOf(29))
+// console.log(scores.findIndex(function(n){
+//   return n == 29
+// }))
+
+// // console.log(scores.reverse())
+
+// scores.sort((a,b) => a-b)
+// console.log(scores)
+
+
+
+
+// let add = (a,b) => {return a + b}
+// console.log(add(1,2))
+
+let m = "gig"
+console.log(m.split(''))
+
+var todosArray = [
+    { id: 1, title: 'learn js', isDoing: false },
+    { id: 2, title: 'make footer', isDoing: true },
+    { id: 3, title: 'design', isDoing: false },
+    { id: 4, title: 'vue js', isDoing: false },
 ]
 
-// var exists = users.includes({id:1, name:"ali", age:14})
-var exists = users.some(function(user, u){
-    console.log(u)
-    return user.name == "ali"
-})
-if(exists)
-    console.log("yes")
-
-// let allProducts = [
-// 	{id: 1, name: 'Laptop', price: 17000000},
-// 	{id: 2, name: 'Phone', price: 7000000},
-// 	{id: 3, name: 'Pen', price: 12000},
-// 	{id: 4, name: 'Pencil', price: 9000},
-// 	{id: 5, name: 'Eraser', price: 6000},
-// 	{id: 6, name: 'Milk', price: 35000},
-// ]
-
-// let userBasket = [
-// 	{id: 1, name: 'pen', price: 12000},
-// 	{id: 2, name: 'pencil', price: 9000},
-// ]
-
-
-// function s(){
-//     console.log(x)
-// }
-// let x = 2
-// s()
-
-
-
-// یک فروشگاه آنلاین پیاده سازی کنید
-
-// به این شکل که محصولات فروشگاه خود را در دیتابیسی ذخیره کرده
-//  (آرایه) و آرایه ای برای سبد خرید کاربر داشته باشید
-// و از کاربر اسم محصولی را که قصد
-//  اضافه کردن به سبد خرید دارد ، دریافت کنید
-
-// اگر محصول درخواستی کاربر در انبار فروشگاه شما موجود بود،
-//  آن را به سبد خرید کاربر اضافه کنید
-// و سپس مبلغ کل سبد خرید را محاسبه کرده و به کاربر نمایش دهید
-// و در غیر این صورت به کاربر پیغام اتمام موجودی نمایش دهید
-
-// :نکات قابل توجه
-// بعد از اضافه محصول به سبد خرید کاربر،
-//  سبد را در کنسول نمایش دهید
-// به طور دیفالت 3 محصول با
-//  قیمت های مختلف در سبد خرید کاربر موجود باشد
-
-
-
-// فرض کنید پلتفرمی مثل تلگرام ساخته اید
-//  و چند نفر در آن یک گروه ایجاد کردند
-// و قصد ایجاد تماس کنفرانسی دارند
-
-// اما شرط لازم برای ایجاد تماس
-//  کنفرانسی بالای 18 سال بودن اعضای گروه است
-// اگر تمامی اعضا بالای 18 سال نبودند،
-//  اجازه ایجاد تماس کنفرانسی را ندهید
+var userMenu = prompt('Choose one of them: \n 1. Add Todo \n 2. Remove Todo \n 3. Do Todo')
