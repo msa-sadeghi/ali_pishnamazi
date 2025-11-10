@@ -1,52 +1,36 @@
-// var userBasket = [
-// 	{id: 1, name: 'laptop', price: 5000000},
-// 	{id: 2, name: 'phone', price: 3000000},
-// 	{id: 3, name: 'milk', price: 35000},
-// 	{id: 4, name: 'water', price: 6000},
-// 	{id: 5, name: 'coolpad', price: 400000},
-// 	{id: 6, name: 'pencil', price: 9000},
-// ]
+let a = 12
 
-// let filteredProducts = userBasket.filter(function(product){
-//   return product.price < 10000
-// })
+let b = a
+b = 20
+console.log(a)
+console.log(b)
 
-// let postCost = filteredProducts.length * 100
-// let total = 0
+let person1 = {
+    name: "ali",
+    age: 20    
+}
 
-// userBasket.forEach(function(p){
-//   total += p.price
-// })
-// total += postCost
+let person2 = person1
+person1.age = 23
+console.log(person1)
+console.log(person2)
 
-// console.log(total)
+// یک سامانه فروش بلیط آنلاین پیاده سازی کنید
 
-// let scores = [19, 29, 29, 67]
-// console.log(scores.indexOf(29))
-// console.log(scores.lastIndexOf(29))
-// console.log(scores.findIndex(function(n){
-//   return n == 29
-// }))
+// به این صورت که مبدا سفر (استان) را از کاربر دریافت کرده 
+// و سپس شهر های استان وارد شده را در کنسول نمایش دهید
 
-// // console.log(scores.reverse())
+// ساختار پروژه و ذخیره سازی اطلاعات بر عهده شما
 
-// scores.sort((a,b) => a-b)
-// console.log(scores)
+var cities = {
+    tehran: ['Tehran', 'Shahryar', 'rudehen', 'bumehen'],
+    shiraz: ['shiraz', 'fars', 'jamshid', 'shiraz pars'],
+    mashhad: ['Mashhad', 'Fariman', 'Guchan'],
+    tabriz: ['Tabriz', 'Marand', 'Jolfa', 'Ahar'],
+}
 
+if('tehran' in cities){
+    console.log(cities.tehran)
+}
 
-
-
-// let add = (a,b) => {return a + b}
-// console.log(add(1,2))
-
-let m = "gig"
-console.log(m.split(''))
-
-var todosArray = [
-    { id: 1, title: 'learn js', isDoing: false },
-    { id: 2, title: 'make footer', isDoing: true },
-    { id: 3, title: 'design', isDoing: false },
-    { id: 4, title: 'vue js', isDoing: false },
-]
-
-var userMenu = prompt('Choose one of them: \n 1. Add Todo \n 2. Remove Todo \n 3. Do Todo')
+cities['tehran']

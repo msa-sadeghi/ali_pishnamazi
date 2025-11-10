@@ -34,7 +34,8 @@ class DatabaseManager:
             with conn.cursor() as cursor:
                 cursor.execute(query, params)
                 conn.commit()
-                return cursor.fetchall() if cursor.description else None
+                
+                return (rows := cursor.fetchall()) if cursor.description and rows else None
         except Exception as ex:
             print(ex)
             conn.rollback()
@@ -43,4 +44,7 @@ class DatabaseManager:
 
 
 
+
+# d = DatabaseManager()
+# print(d.execute_query("""SELECT * FROM borrowers"""))
 

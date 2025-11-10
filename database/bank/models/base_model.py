@@ -4,8 +4,6 @@ class BaseModel:
     table_name = None
     def __init__(self):
         self.db = DatabaseManager()
-        
-
     def get_all(self):
         query = f"SELECT * FROM {self.table_name}"
         return self.db.execute_query(query)
