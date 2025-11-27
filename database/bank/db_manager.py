@@ -30,12 +30,13 @@ class DatabaseManager:
 
     def execute_query(self, query, params=None):
         conn = self.get_connection()
+        
         try:
             with conn.cursor() as cursor:
                 cursor.execute(query, params)
                 conn.commit()
-                
-                return (rows := cursor.fetchall()) if cursor.description and rows else None
+                rows = cursor.fetchall() if cursor.description else None
+                return rows 
         except Exception as ex:
             print(ex)
             conn.rollback()

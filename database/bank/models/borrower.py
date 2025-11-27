@@ -1,4 +1,5 @@
 from .base_model import BaseModel
+
 class Borrower(BaseModel):
     table_name = "borrowers"
     def create(self, data):
@@ -15,6 +16,26 @@ class Borrower(BaseModel):
         return self.db.execute_query(query, params)
     
     def update(self, id, data):
-        pass
+        query = """
+            UPDATE borrowers SET
+            first_name = %s, last_name = %s, phone = %s,
+            mobile = %s, address = %s
+            WHERE id = %s
+        """
+        params = (
+            data['first_name'], data['last_name'],
+            data['phone'], data.get('mobile'),
+            data.get('address'), id
+        )
+        return self.db.execute_query(query, params)
+    
     def search(self, keyword):
-        pass
+        query = """
+            SELECT * FROM borrowers 
+            WHERE national_code LIKE %s 
+            OR first_name LIKE %s 
+            OR last_name LIKE %s
+            OR phone LIKE %s
+        """
+        search_term = f"%{keyword}%"
+        return self.db.execute_query(query, (search_term,) * 4)

@@ -1,36 +1,49 @@
-let a = 12
+// console.log("this is a text")
 
-let b = a
-b = 20
-console.log(a)
-console.log(b)
+// setTimeout(function(){
+//     console.log('image loaded')
+// }, 2000)
+// let i = 0
+// let timer = setInterval(function(){
+//     console.log(`job ${i}`)
+//     i++
+//     if (i === 10){
+//         clearInterval(timer)
+//     }
+// }, 1000)
 
-let person1 = {
-    name: "ali",
-    age: 20    
+// console.log("this is another text")
+
+// یک تایمر پیاده سازی کنید
+
+// به طوری که از کاربر میزان ثانیه و
+//  دقیقه را دریافت کرده و تایمری را با اطلاعات وارد شده استارت بزنید
+
+// و زمانی که تایمر تمام شد، پیغام مناسبی نمایش داده شود
+// let x
+// function my(){
+//     x = 12
+//     // document.location = "https://www.google.com"
+// }
+// my()
+// console.log(x)
+
+// {
+//     let y = 13
+// }
+// console.log(y)
+
+// for(let i = 0; i < 3; i++){
+    
+//     console.log(`#${i}`)
+// }
+
+// console.log(i)
+
+let btn = document.getElementById('btn')
+let dd = document.getElementById('in').value
+
+ function me(){
+    document.location =  "another.html"
 }
-
-let person2 = person1
-person1.age = 23
-console.log(person1)
-console.log(person2)
-
-// یک سامانه فروش بلیط آنلاین پیاده سازی کنید
-
-// به این صورت که مبدا سفر (استان) را از کاربر دریافت کرده 
-// و سپس شهر های استان وارد شده را در کنسول نمایش دهید
-
-// ساختار پروژه و ذخیره سازی اطلاعات بر عهده شما
-
-var cities = {
-    tehran: ['Tehran', 'Shahryar', 'rudehen', 'bumehen'],
-    shiraz: ['shiraz', 'fars', 'jamshid', 'shiraz pars'],
-    mashhad: ['Mashhad', 'Fariman', 'Guchan'],
-    tabriz: ['Tabriz', 'Marand', 'Jolfa', 'Ahar'],
-}
-
-if('tehran' in cities){
-    console.log(cities.tehran)
-}
-
-cities['tehran']
+// btn.addEventListener('click', my)
