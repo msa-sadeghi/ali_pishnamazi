@@ -10,9 +10,11 @@ class Users(BaseModel):
         VALUES
         (%s, %s, %s, %s, %s)"""
         params = (
-            data['username'], data['password_hash'],
-            data['full_name'], data['role'],
-            data['is_active']
+            data["username"],
+            data["password_hash"],
+            data["full_name"],
+            data["role"],
+            data["is_active"],
         )
 
         self.db_manager.execute_query(query, params=params)
@@ -24,9 +26,12 @@ class Users(BaseModel):
         WHERE id = %s"""
 
         params = (
-            data['username'], data['password_hash'],
-            data['full_name'], data['role'],
-            data['is_active'], id
+            data["username"],
+            data["password_hash"],
+            data["full_name"],
+            data["role"],
+            data["is_active"],
+            id,
         )
 
         self.db_manager.execute_query(query, params=params)
@@ -34,7 +39,9 @@ class Users(BaseModel):
     def search(self, keyword: str):
         query = f"""SELECT * FROM {self.table_name}
         WHERE username LIKE %s OR full_name LIKE %s
-        OR role LIKE %s OR is_active LIKE %s"""
+        OR role LIKE %s"""
 
-        search_term = (keyword,)
-        self.db_manager.execute_query(query, (search_term,) * 4)
+        params = (f"{keyword}",) * 3
+        print(query)
+        print(params)
+        return self.db_manager.execute_query(query, params=params)

@@ -1,14 +1,13 @@
-from models.borrower import Borrower
+# from PyQt5.QtWidgets import QApplication, QDialog
+# from ui.login import LoginForm
+# import sys
 
-b = Borrower()
-data = {}
-data['national_code'] = '026000000'
-data['first_name'] = 'armin'
-data['last_name'] = 'rezaei'
-data['father_name'] = 'kamal'
-data['birth_date'] = '2020-01-01'
-data['phone'] = "02177777777"
-data['mobile'] = "09390000000"
-data['address'] = "teh"
-data['postal_code'] = "5555555555"
-b.create(data)
+# app = QApplication([])
+
+# login_dialog = LoginForm()
+# login_dialog.show()
+# app.exec_()
+
+from authentication.auth import AuthManager
+a = AuthManager()
+a.login('sara', '12345')
