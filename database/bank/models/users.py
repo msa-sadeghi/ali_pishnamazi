@@ -42,6 +42,4 @@ class Users(BaseModel):
         OR role LIKE %s"""
 
         params = (f"{keyword}",) * 3
-        print(query)
-        print(params)
         return self.db_manager.execute_query(query, params=params)

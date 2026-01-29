@@ -5,15 +5,15 @@ class Borrowers(BaseModel):
     table_name = "borrowers"
 
     def create(self, data: dict):
-        query = f"""INSERT INTO {self.table_name} (national_code, first_name, last_name, 
-        father_name, birth_date, phone, mobile, address, postal_code) 
+        query = f"""INSERT INTO {self.table_name} (national_code, first_name, last_name,
+        father_name, birth_date, phone, mobile, address, postal_code)
         VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s) RETURNING id"""
         params = (
             data['national_code'], data['first_name'],
-            data['last_name'], data['father_name'],
-            data['birth_date'], data['phone'],
-            data['mobile'], data['address'], 
-            data['postal_code']
+            data['last_name'], data.get('father_name'),
+            data.get('birth_date'), data.get('phone'),
+            data.get('mobile'), data.get('address'),
+            data.get('postal_code')
         )
 
         return self.db_manager.execute_query(query, params)
@@ -23,10 +23,15 @@ class Borrowers(BaseModel):
         last_name = %s, father_name = %s, birth_date = %s, phone = %s, mobile = %s, 
         address = %s, postal_code = %s WHERE id = %s"""
         params = (
-            data['national_code'], data['first_name'],
-            data['last_name'], data['father_name'],
-            data['birth_date'], data['phone'],
-            data['mobile'], data['postal_code'], id
+            data["national_code"],
+            data["first_name"],
+            data["last_name"],
+            data["father_name"],
+            data["birth_date"],
+            data["phone"],
+            data["mobile"],
+            data["postal_code"],
+            id,
         )
 
         return self.db_manager.execute_query(query, params)

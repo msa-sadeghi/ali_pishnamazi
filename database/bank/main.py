@@ -1,13 +1,14 @@
-# from PyQt5.QtWidgets import QApplication, QDialog
-# from ui.login import LoginForm
-# import sys
+from PyQt5.QtWidgets import QApplication, QDialog
+from ui.login import LoginForm
+from ui.main_form import MainForm
+import sys
 
-# app = QApplication([])
+app = QApplication([])
 
-# login_dialog = LoginForm()
-# login_dialog.show()
-# app.exec_()
+login_dialog = LoginForm()
+if login_dialog.exec_() == login_dialog.Accepted:
+    main_form = MainForm()
+    main_form.show()
 
-from authentication.auth import AuthManager
-a = AuthManager()
-a.login('sara', '12345')
+app.exec_()
+
