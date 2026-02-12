@@ -49,4 +49,4 @@ class DatabaseManager:
 
 
 d = DatabaseManager()
-print(d.execute_query("""SELECT * FROM borrowers"""))
+# print(d.execute_query("""SELECT * FROM borrowers"""))
