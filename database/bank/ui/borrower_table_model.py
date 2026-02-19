@@ -26,7 +26,9 @@ class BorrowerTableModel(QAbstractTableModel):
         return len(self._headers)
 
     def update_data(self, new_data):
+        self.beginResetModel()
         self._data = new_data
+        self.endResetModel()
 
     def data(self, index, role):
         if role == Qt.DisplayRole:

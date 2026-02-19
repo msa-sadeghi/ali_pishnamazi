@@ -3,6 +3,7 @@ from ui.borrower_form import Ui_MainWindow
 from models.borrowerController import BorrowerController
 from PyQt5.QtCore import pyqtSignal
 
+
 class BorrowerForm(QMainWindow):
     borrower_created = pyqtSignal()
 
