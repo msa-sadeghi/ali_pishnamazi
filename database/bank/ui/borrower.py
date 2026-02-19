@@ -1,9 +1,11 @@
-from PyQt5.QtWidgets import QMainWindow
+from PyQt5.QtWidgets import QMainWindow, QMessageBox
 from ui.borrower_form import Ui_MainWindow
 from models.borrowerController import BorrowerController
-
+from PyQt5.QtCore import pyqtSignal
 
 class BorrowerForm(QMainWindow):
+    borrower_created = pyqtSignal()
+
     def __init__(self):
         super().__init__()
         self.ui_Dialog = Ui_MainWindow()
@@ -20,4 +22,6 @@ class BorrowerForm(QMainWindow):
         }
 
         if self.controller.create_borrower(data):
+            QMessageBox.information(self, "Success", "Borrower created Succussfully")
+            self.borrower_created.emit()
             self.close()

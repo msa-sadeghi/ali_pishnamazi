@@ -23,8 +23,10 @@ class MainForm(QMainWindow):
     def open_borrower_form(self):
         if self.borrower_form is None:
             self.borrower_form = BorrowerForm()
+            self.borrower_form.borrower_created.connect(self.load_borrowers)
         self.borrower_form.show()
 
     def load_borrowers(self):
+        print("+++++++++++++++++++")
         borrowers_data = self.controller.get_all_borrowers()
         self.table_model.update_data(borrowers_data)
