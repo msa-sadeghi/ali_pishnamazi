@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Post
-from .forms import ContactForm
+from .forms import ContactForm, PostForm
 
 
 def post_list(request):
@@ -28,3 +28,20 @@ def contact(request):
 
         form = ContactForm()
     return render(request, "blog/contact.html", {"form": form})
+
+
+def create_post(request):
+    if request.method == "POST":
+        post_form = PostForm(request.POST)
+        if post_form.is_valid():
+
+            title = post_form.cleaned_data["title"]
+            content = post_form.cleaned_data["content"]
+            price = post_form.cleaned_data["price"]
+            post = Post(title=title, content=content, price=price)
+            post.save()
+            return redirect("blog:home")
+
+    else:
+        post_form = PostForm()
+    return render(request, "blog/post_form.html", {"form": post_form})

@@ -22,3 +22,19 @@ class ContactForm(forms.Form):
         if name and email and name.lower() in email.lower():
             raise forms.ValidationError("ایمیل نباید داخل  نام باشد")
         return cleaned_data
+
+
+class PostForm(forms.Form):
+    title = forms.CharField(
+        max_length=100,
+        label="عنوان",
+        widget=forms.TextInput(attrs={"placeholder": "عنوان پست ...", "class": "form-control"}),
+    )
+    content = forms.CharField(
+        label="متن", widget=forms.Textarea(attrs={"placeholder": "عنوان پست ...", "class": "form-control"})
+    )
+    price = forms.CharField(
+        max_length=100,
+        label="قیمت",
+        widget=forms.TextInput(attrs={"placeholder": "قیمت پست ...", "class": "form-control"}),
+    )
