@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from .models import Post
 from .forms import ContactForm, PostForm
@@ -35,13 +35,29 @@ def create_post(request):
         post_form = PostForm(request.POST)
         if post_form.is_valid():
 
-            title = post_form.cleaned_data["title"]
-            content = post_form.cleaned_data["content"]
-            price = post_form.cleaned_data["price"]
-            post = Post(title=title, content=content, price=price)
+            post = post_form.save(commit=False)
+            post.author = request.user
             post.save()
+
+            # title = post_form.cleaned_data["title"]
+            # content = post_form.cleaned_data["content"]
+            # price = post_form.cleaned_data["price"]
+            # post = Post(title=title, content=content, price=price)
+            # post.save()
             return redirect("blog:home")
 
     else:
         post_form = PostForm()
     return render(request, "blog/post_form.html", {"form": post_form})
+
+
+def post_update(request, pk):
+    post = get_object_or_404(Post, pk=pk, author=request.user)
+    if request.method == "POST":
+        form = PostForm(request.POST, instance=post)
+        if form.is_valid():
+            form.save()
+            return redirect("blog:post_details", id=post.id)
+    else:
+        form = PostForm(instance=post)
+    return render(request, "blog/post_form.html", {"form": form})

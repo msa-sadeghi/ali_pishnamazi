@@ -1,4 +1,5 @@
 from django import forms
+from .models import Post
 
 
 class ContactForm(forms.Form):
@@ -24,17 +25,15 @@ class ContactForm(forms.Form):
         return cleaned_data
 
 
-class PostForm(forms.Form):
-    title = forms.CharField(
-        max_length=100,
-        label="عنوان",
-        widget=forms.TextInput(attrs={"placeholder": "عنوان پست ...", "class": "form-control"}),
-    )
-    content = forms.CharField(
-        label="متن", widget=forms.Textarea(attrs={"placeholder": "عنوان پست ...", "class": "form-control"})
-    )
-    price = forms.CharField(
-        max_length=100,
-        label="قیمت",
-        widget=forms.TextInput(attrs={"placeholder": "قیمت پست ...", "class": "form-control"}),
-    )
+class PostForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        fields = ("title", "content", "is_published", "price")
+        labels = {"title": "عنوان", "content": "محتوا"}
+        widgets = {"title": forms.TextInput(attrs={"placeholder": "عنوان پست را وارد کنید", "maxlength": 120})}
+
+    def clean_title(self):
+        title = self.cleaned_data["title"]
+        if len(title) < 5:
+            raise forms.ValidationError("عنوان باید حداقل 3 کاراکتر باشد")
+        return title.strip()
