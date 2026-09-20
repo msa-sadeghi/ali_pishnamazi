@@ -28,7 +28,7 @@ class ContactForm(forms.Form):
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ("title", "content", "is_published", "price")
+        fields = ("title", "content", "image", "is_published", "price")
         labels = {"title": "عنوان", "content": "محتوا"}
         widgets = {"title": forms.TextInput(attrs={"placeholder": "عنوان پست را وارد کنید", "maxlength": 120})}
 

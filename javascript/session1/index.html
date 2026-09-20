@@ -1,24 +1,31 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
-        .container{
-            display: grid;
-            grid-template-areas: 'first first .';
-        }
-        div.c{
-            grid-area: 'first';
-        }
+      .container {
+        display: grid;
+        grid-template-areas: "first first .";
+      }
+      div.c {
+        grid-area: "first";
+      }
     </style>
-</head>
-<body>
-    <input type="text" id="in">
+  </head>
+  <body>
+    <form>
+      <input type="text" name="input" id="task_input" />
+      <input type="radio" name="priority" id="normal" value="normal" checked />
+      normal
+      <input type="radio" name="priority" id="low" />low
+      <input type="radio" name="priority" id="high" />high
 
-    <button id="btn" onclick="me()">clickme</button>
-    
+      <button type="submit" id="btn">Add task</button>
+    </form>
+    <ul id="tasks"></ul>
+
     <script src="./script.js"></script>
-</body>
+  </body>
 </html>
