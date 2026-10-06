@@ -1,5 +1,7 @@
 from django.urls import path
 from .views import post_details, post_list, contact, create_post, post_update
+from django.conf import settings
+from django.conf.urls.static import static
 
 app_name = "blog"
 

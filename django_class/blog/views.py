@@ -1,12 +1,23 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from .models import Post
-from .forms import ContactForm, PostForm
+from .forms import ContactForm, PostForm, SearchForm
+from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 
 
 def post_list(request):
-    posts = Post.objects.filter(is_published=False).order_by("-created")
-    context = {"posts": posts}
+
+    if request.method == "POST":
+        search_form = SearchForm(request.POST)
+        if search_form.is_valid():
+            search_item = search_form.cleaned_data["query"]
+            print(search_item)
+            posts = Post.objects.filter(Q(title__icontains=search_item) | Q(content__icontains=search_item))
+    else:
+        search_form = SearchForm(initial={"query": "django"})
+        posts = Post.objects.filter(is_published=False).order_by("-created")
+    context = {"posts": posts, "search_form": search_form}
     return render(request, "blog/index.html", context)
 
 
@@ -30,14 +41,16 @@ def contact(request):
     return render(request, "blog/contact.html", {"form": form})
 
 
+@login_required
 def create_post(request):
     if request.method == "POST":
         post_form = PostForm(
             request.POST,
             request.FILES,
         )
+        print(post_form.errors)
         if post_form.is_valid():
-
+            # print(post_form.cleaned_data)
             post = post_form.save(commit=False)
             post.author = request.user
             post.save()
